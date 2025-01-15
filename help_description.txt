@@ -1,0 +1,4 @@
+3 possible states:
+    MM(match or mismatch) : 0
+    Ix(char in first sequence, gap in second): 1
+    Iy(char in second sequence, gap in first): 2
