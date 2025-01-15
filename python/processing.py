@@ -176,11 +176,11 @@ def write_data(folder_path, seq_pairs):
 
 
 # load data
-train_data, test_data, estimate_data = load_data("C:\\Users\\Matija\\Desktop\\BIONFO2\\BIONFORMATICS2_PROJECT\\data\\HIV1_ALL_2022_genome_DNA.fasta", 3, 3, 3)
+train_data, test_data, estimate_data = load_data("C:\\Users\\Matija\\Desktop\\BIONFO2\\BIONFORMATICS2_PROJECT\\data\\HIV1_ALL_2022_genome_DNA.fasta", 3, 3, 20)
 # make pairs
 train_pairs = make_pairs(train_data)
 test_pairs = make_pairs(test_data)
-estimate_pairs = make_pairs(test_data)
+estimate_pairs = make_pairs(estimate_data)
 # MSA to PSA
 train_pairs = MSA_TO_PSA(train_pairs)
 test_pairs = MSA_TO_PSA(test_pairs)

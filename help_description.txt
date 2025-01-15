@@ -2,3 +2,47 @@
     MM(match or mismatch) : 0
     Ix(char in first sequence, gap in second): 1
     Iy(char in second sequence, gap in first): 2
+
+order of pairing: ACTG, MMIxIy
+MATRIX txt file description probabilities by rows:
+pi.txt
+1: MM
+2: Ix
+3: Iy
+
+A.txt
+1: MM -> MM
+2. MM -> Ix
+3. MM -> Iy
+4. Ix -> MM
+5. Ix -> Ix
+6. Ix -> Iy
+7. Iy -> MM
+8. Iy -> Ix
+9. Iy -> Iy
+
+E.txt
+1. MM -> AA
+2. MM -> AC
+3. MM -> AT
+4. MM -> AG 
+5. MM -> CA 
+6. MM -> CC
+7. MM -> CT
+8. MM -> CG
+9. MM -> TA
+10. MM -> TC
+11. MM -> TT
+12. MM -> TG
+13. MM -> GA 
+14. MM -> GC
+15. MM -> GT
+16. MM -> GG
+17. Ix -> A-
+18. Ix -> C-
+19. Ix -> T-
+20. Ix -> G-
+21. Iy -> -A
+22. Iy -> -C
+23. Iy -> -T
+24. Iy -> -G
