@@ -1,7 +1,18 @@
 import os
 
 
-def check_state(symbol1, symbol2):
+def check_state(symbol1: str, symbol2: str):
+    """
+    Function that checks the current state
+    and returns it.
+
+    Arguments:
+        - symbol1: str => first element of state
+        - symbol2: str => second element of state
+
+    Returns:
+        - [empty]: str => current state
+    """
     if symbol1 != "-" and symbol2 != "-":
         return "MM"
     if symbol1 != "-" and symbol2 == "-":
@@ -88,14 +99,36 @@ def initialize_E():
     return E
 
 
-def update_pi(pi, pair):
+def update_pi(pi: dict, pair: tuple[str, str]):
+    """
+    Function that updates pi values for every
+    pair in estimation.
+
+    Arguments:
+        - pi: dict => dictionary of transmission probabilites
+        - pair: tuple(str, str) => pair of sequences
+
+    Returns:
+        - pi: dict => updated dictionary of probabilities
+    """
     first, second = pair
     state = check_state(first[0], second[0])
     pi[state] += 1
     return pi
 
 
-def update_A(A, pair):
+def update_A(A: dict, pair: tuple[str, str]):
+    """
+    Function that updates A values for every
+    pair in estimation.
+
+    Arguments:
+        - A: dict => dictionary of transmission probabilites
+        - pair: tuple(str, str) => pair of sequences
+
+    Returns:
+        - A: dict => updated dictionary of probabilities
+    """
     first, second = pair
     N = len(first)
     state = check_state(first[0], second[0])
@@ -107,7 +140,18 @@ def update_A(A, pair):
     return A
 
 
-def update_E(E, pair):
+def update_E(E: dict, pair: tuple[str, str]):
+    """
+    Function that updates E values for every
+    pair in estimation.
+
+    Arguments:
+        - E: dict => dictionary of transmission probabilites
+        - pair: tuple(str, str) => pair of sequences
+
+    Returns:
+        - E: dict => updated dictionary of probabilities
+    """
     first, second = pair
     N = len(first)
     for i in range(N):
@@ -117,14 +161,32 @@ def update_E(E, pair):
     return E
 
 
-def calculate_pi(pi):
+def calculate_pi(pi: dict):
+    """
+    Function that calculates final pi probabilities.
+
+    Arguments:
+        - pi: dict => dict of pi probabilities
+
+    Returns:
+        - pi: dict => final dict of pi probabilities
+    """
     n = sum(pi.values())
     for state in pi:
         pi[state] /= n
     return pi
 
 
-def calculate_A(A):
+def calculate_A(A: dict):
+    """
+    Function that calculates final A probabilities.
+
+    Arguments:
+        - A: dict => dict of A probabilities
+
+    Returns:
+        - A: dict => final dict of A probabilities
+    """
     for state in A:
         n = sum(A[state].values())
         for transmission_state in A[state]:
@@ -132,7 +194,16 @@ def calculate_A(A):
     return A
 
 
-def calculate_E(E):
+def calculate_E(E: dict):
+    """
+    Function that calculates final E probabilities.
+
+    Arguments:
+        - E: dict => dict of E probabilities
+
+    Returns:
+        - E: dict => final dict of E probabilities
+    """
     for state in E:
         n = sum(E[state].values())
         for emission in E[state]:
@@ -140,7 +211,22 @@ def calculate_E(E):
     return E
 
 
-def calculate_values(A, E, pi, estimate_path):
+def calculate_values(A: dict, E: dict, pi: dict, estimate_path: str):
+    """
+    Function that calculates estimate probabilities fro all estimate
+    pairs.
+
+    Arguments:
+        - A: dict => dict of A probabilities
+        - E: dict => dict of E probabilities
+        - pi: dict => dict of pi probabilities
+        - estimate_path: str => path for estimation pairs
+
+    Returns:
+        - A: dict => final dict of A probabilities
+        - E: dict => final dict of E probabilities
+        - pi: dict => final dict of pi probabilities
+    """
     for file_name in os.listdir(estimate_path):
         file_path = os.path.join(estimate_path, file_name)
 
@@ -159,7 +245,17 @@ def calculate_values(A, E, pi, estimate_path):
     return A, E, pi
 
 
-def write_probs(A, E, pi, transmission_path):
+def write_probs(A: dict, E: dict, pi: dict, transmission_path: str):
+    """
+    Function that writes estimate probabilities into storage paths.
+
+    Arguments:
+        - A: dict => dict of A probabilities
+        - E: dict => dict of E probabilities
+        - pi: dict => dict of pi probabilities
+        - transmission_path: str => path for storage
+        of estimated values
+    """
     os.makedirs(transmission_path, exist_ok=True)
     # A
     A_path = os.path.join(transmission_path, "A.txt")
