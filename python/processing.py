@@ -190,4 +190,4 @@ test_pairs = remove_all_dashes(test_pairs)
 # write
 write_data("C:\\Users\\Matija\\Desktop\\BIONFO2\\BIONFORMATICS2_PROJECT\\data\\train_data\\baum_welch_train", train_pairs)
 write_data("C:\\Users\\Matija\\Desktop\\BIONFO2\\BIONFORMATICS2_PROJECT\\data\\train_data\\estimate", estimate_pairs)
-write_data("C:\\Users\\Matija\\Desktop\\BIONFO2\\BIONFORMATICS2_PROJECT\\data\\test_data", test_pairs)
+write_data("C:\\Users\\Matija\\Desktop\\BIONFO2\\BIONFORMATICS2_PROJECT\\data\\data_test", test_pairs)

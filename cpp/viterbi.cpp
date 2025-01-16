@@ -4,6 +4,9 @@
 #include <string>
 #include <math.h>
 #include <algorithm>
+#include <iostream>
+#include <fstream>
+#include <filesystem>
 
 const double INF = -1e23;
 
@@ -19,7 +22,7 @@ std::pair<double, int> max(std::vector<double> vec){
     return std::make_pair(max_num, max_index);
 }
 
-void viterbi_algo(Model &model, std::pair<std::string, std::string> &pair){
+std::pair<std::string, std::string> viterbi_algo(Model &model, std::pair<std::string, std::string> &pair){
     std::string seq1 = pair.first;
     std::string seq2 = pair.second;
     long n = pair.first.size();
@@ -135,18 +138,40 @@ void viterbi_algo(Model &model, std::pair<std::string, std::string> &pair){
     }
     std::reverse(align_first.begin(), align_first.end());
     std::reverse(align_second.begin(), align_second.end());
-    std::cout << align_first << std::endl;
-    std::cout << align_second << std::endl;
+    std::pair<std::string, std::string> return_pair = std::make_pair(align_first, align_second);
+    return return_pair;
+    
 
 }
 
 
 int main(void){
-    std::string seq1 = "GATTACAAAAAAAAAAAAAAAAAAATCGCTCGT";
-    std::string seq2 = "GTCGACGCAATATATATAAAAAAAAAAAAAAAAAAAAAAA";
-    std::pair<std::string, std::string> pair = std::make_pair(seq1, seq2);
     Model model = Model("C:\\Users\\Matija\\Desktop\\BIONFO2\\BIONFORMATICS2_PROJECT\\transmission_values\\estimate\\pi.txt",
     "C:\\Users\\Matija\\Desktop\\BIONFO2\\BIONFORMATICS2_PROJECT\\transmission_values\\estimate\\A.txt",
     "C:\\Users\\Matija\\Desktop\\BIONFO2\\BIONFORMATICS2_PROJECT\\transmission_values\\estimate\\A.txt");
-    viterbi_algo(model, pair);
+    std::string folderPath = "C:\\Users\\Matija\\Desktop\\BIONFO2\\BIONFORMATICS2_PROJECT\\data\\data_test";
+    int i = 0;
+    for (const auto &entry : std::filesystem::directory_iterator(folderPath)){
+        std::ifstream file(entry.path());
+        std::string seq1;
+        std::string seq2;
+        getline(file, seq1);
+        getline(file, seq2);
+        std::pair<std::string, std::string> pair = std::make_pair(seq1, seq2);
+        std::pair<std::string, std::string> aligned_pair = viterbi_algo(model, pair);
+
+        std::string filePathWrite = "C:\\Users\\Matija\\Desktop\\BIONFO2\\BIONFORMATICS2_PROJECT\\data\\alignments_hmm\\";
+        filePathWrite += "aligned_no_" + std::to_string(i); 
+        std::ofstream outFile(filePathWrite);
+        if (outFile.is_open()) {
+            outFile << aligned_pair.first << '\n';
+            outFile << aligned_pair.second << '\n';
+            outFile.close();
+        } else {
+            std::cerr << "Failed to open file for writing.\n";
+        }
+        std::cout << "Viterbi" << std::endl;
+        i++;
+    }
+
 }
