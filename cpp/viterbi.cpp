@@ -148,9 +148,9 @@ std::pair<std::string, std::string> viterbi_algo(Model &model, std::pair<std::st
 
 
 int main(void){
-    Model model = Model("../transmission_values/estimate/pi.txt",
-    "../transmission_values/estimate/A.txt",
-    "../transmission_values/estimate/E.txt");
+    Model model = Model("../transmission_values/trained/pi.txt",
+    "../transmission_values/trained/A.txt",
+    "../transmission_values/trained/E.txt");
     std::string folderPath = "../data/data_test";
     int i = 0;
     for (const auto &entry : std::filesystem::directory_iterator(folderPath)){

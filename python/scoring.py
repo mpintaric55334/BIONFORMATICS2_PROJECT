@@ -32,4 +32,4 @@ def scores_from_folder(folder_path: str, match: int, mismatch: int, gap: int):
             scores.append(score(pair, match, mismatch, gap))
     return scores
 
-print(scores_from_folder("../data/alignments_hmm", 3, 2, -1))
+print(scores_from_folder("../data/alignments_needle", 3, 2, -1))
