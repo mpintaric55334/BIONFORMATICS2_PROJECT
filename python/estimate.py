@@ -289,5 +289,5 @@ def write_probs(A: dict, E: dict, pi: dict, transmission_path: str):
 A = initialize_A()
 E = initialize_E()
 pi = initialize_pi()
-A, E, pi = calculate_values(A, E, pi, "C:\\Users\\Matija\\Desktop\\BIONFO2\\BIONFORMATICS2_PROJECT\\data\\train_data\\estimate")
-write_probs(A, E, pi, "C:\\Users\\Matija\\Desktop\\BIONFO2\\BIONFORMATICS2_PROJECT\\transmission_values\\estimate")
+A, E, pi = calculate_values(A, E, pi, "../data/train_data/estimate")
+write_probs(A, E, pi, "../transmission_values/estimate")

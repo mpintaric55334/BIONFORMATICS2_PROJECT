@@ -176,7 +176,7 @@ def write_data(folder_path, seq_pairs):
 
 
 # load data
-train_data, test_data, estimate_data = load_data("C:\\Users\\Matija\\Desktop\\BIONFO2\\BIONFORMATICS2_PROJECT\\data\\HIV1_ALL_2022_genome_DNA.fasta", 3, 3, 20)
+train_data, test_data, estimate_data = load_data("../data/HIV1_ALL_2022_genome_DNA.fasta", 7, 7, 20)
 # make pairs
 train_pairs = make_pairs(train_data)
 test_pairs = make_pairs(test_data)
@@ -188,6 +188,6 @@ estimate_pairs = MSA_TO_PSA(estimate_pairs)
 # remove dashes for test
 test_pairs = remove_all_dashes(test_pairs)
 # write
-write_data("C:\\Users\\Matija\\Desktop\\BIONFO2\\BIONFORMATICS2_PROJECT\\data\\train_data\\baum_welch_train", train_pairs)
-write_data("C:\\Users\\Matija\\Desktop\\BIONFO2\\BIONFORMATICS2_PROJECT\\data\\train_data\\estimate", estimate_pairs)
-write_data("C:\\Users\\Matija\\Desktop\\BIONFO2\\BIONFORMATICS2_PROJECT\\data\\data_test", test_pairs)
+write_data("../data/train_data/baum_welch_train", train_pairs)
+write_data("../data/train_data/estimate", estimate_pairs)
+write_data("../data/data_test", test_pairs)

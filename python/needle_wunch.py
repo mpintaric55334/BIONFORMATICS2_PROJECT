@@ -18,5 +18,5 @@ def generate_needleman_alignments(test_data_path: str, alignment_path: str):
                 align_file.write(f"{al1}\n{al2}")
         i += 1
 
-generate_needleman_alignments("C:\\Users\\Matija\\Desktop\\BIONFO2\\BIONFORMATICS2_PROJECT\\data\\test_data",
-                              "C:\\Users\\Matija\\Desktop\\BIONFO2\\BIONFORMATICS2_PROJECT\\data\\alignments_needle")
+generate_needleman_alignments("../data/data_test",
+                              "../data/alignments_needle")
