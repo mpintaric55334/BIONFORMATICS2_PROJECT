@@ -115,4 +115,3 @@ std::map<std::string, double> read_E(std::string E_file_path){
     }
     return E;
 }
-
