@@ -3,6 +3,9 @@
 #include "helper.cpp"
 
 class Model {
+    /*
+    Model class of HMM, used for transmission values storage.
+    */
     public:
         std::map <std::string, double> pi;
         std::map <std::string, double> A;

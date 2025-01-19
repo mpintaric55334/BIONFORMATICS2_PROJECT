@@ -117,6 +117,17 @@ std::map<std::string, double> read_E(std::string E_file_path){
     return E;
 }
 double logSumExp(const std::vector<double>& logValues) {
+    /*
+    Function that calculates logSumExp. This is needed
+    because we are in logarithmic space, and summations are 
+    in many formulas
+
+    Arguments:
+        - std::vector<double>& logValues: elements to sum
+
+    Returns:
+        - double: result of summation in log space
+    */
     if(logValues.size()==0){
         return -1e9;
     }
@@ -141,7 +152,7 @@ int transformObservationToInt(const std::string& A, const std::vector<std::strin
     return -1; // Return -1 if the string A is not found in the list
 }
 
-// Function to read initial parameters from files
+// Function to read initial parameters from files in BaumWelch
 void readInitialParameters(std::vector<double>& Pi, std::vector<std::vector<double>>& A, std::vector<std::vector<double>>& E) {
     std::ifstream piFile("../transmission_values/estimate/pi.txt");
     std::ifstream aFile("../transmission_values/estimate/A.txt");

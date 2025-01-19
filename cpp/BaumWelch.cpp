@@ -22,6 +22,15 @@ std::vector<std::string> E_keys = {"MM -> AA", "MM -> AC", "MM -> AT", "MM -> AG
 
 // Baum-Welch algorithm implementation
 void baumWelch(const std::vector<int>& observations, std::vector<double>& Pi, std::vector<std::vector<double>>& A, std::vector<std::vector<double>>& E) {
+    /*
+    Function for baum welch algorithm for sequence observation
+
+    Arguments:
+        - const std::vector<int>& observations: sequence of observation pairs turned to integer
+        - std::vector<double>& Pi: vector of pi probabilities
+        - std::vector<std::vector<double>>& A: vector of A probabilities
+        - std::vector<std::vector<double>>& E: vector of E probabilities
+    */
     size_t N = Pi.size(); // Number of states
     size_t T = observations.size(); // Length of observation sequence
 
@@ -123,7 +132,6 @@ void baumWelch(const std::vector<int>& observations, std::vector<double>& Pi, st
         }
     }
     // Update E
-    // Update E
     for (size_t i = 0; i < N; ++i) {
         for (size_t k = 0; k < E[i].size(); ++k) {
             std::vector<double> numeratorlogContributions;
@@ -185,9 +193,9 @@ int main() {
     }
     
     // Writing updated parameters to files
-    std::string filePath_Pi = "../transmission_values/trained/pi.txt";
-    std::string filePath_A = "../transmission_values/trained/A.txt";
-    std::string filePath_E = "../transmission_values/trained/E.txt";
+    std::string filePath_Pi = "../transmission_values/trained_from_estimate/pi.txt";
+    std::string filePath_A = "../transmission_values/trained_from_estimate/A.txt";
+    std::string filePath_E = "../transmission_values/trained_from_estimate/E.txt";
 
     writePiToFile(Pi, filePath_Pi);
     write_A_ToFile(A, filePath_A);
