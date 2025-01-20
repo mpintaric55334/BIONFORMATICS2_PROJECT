@@ -26,3 +26,6 @@ All the data is ready, parameters are optimized, and aligned sequences are store
 
 5 => INFERENCE AND SCORING
     - to generate mean scores and score plots, run python file scoring.py
+
+6 => SMALL EXAMPLE RUNNING
+    - g++ -o small_example small_example.cpp, run exe file
