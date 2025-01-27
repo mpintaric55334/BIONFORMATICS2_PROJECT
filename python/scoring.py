@@ -35,7 +35,7 @@ def score(pair: tuple[str, str], match: int, mismatch: int, gap: int):
                 total_score += mismatch
         else:
             total_score += gap
-    return total_score
+    return total_score/n   # add normalization by n
 
 
 def EDNAscore(pair: tuple[str, str]):
@@ -54,7 +54,7 @@ def EDNAscore(pair: tuple[str, str]):
         symbol1 = pair[0][i]
         symbol2 = pair[1][i]
         total_score += EDNA[symbol1][symbol2]
-    return total_score
+    return total_score/n  # add normalization by n
 
 
 def scores_from_folder(folder_path: str, match: int, mismatch: int, gap: int):
@@ -88,7 +88,9 @@ def scores_from_folder(folder_path: str, match: int, mismatch: int, gap: int):
 
 
 list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
-        18, 19, 20]
+        18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33,
+        34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
+        51, 52, 53, 54]
 rand_scores, rand_edna_scores = scores_from_folder(
     "../data/alignments_hmm_random", 1, -1, -1)
 estim_scores, estim_edna_scores = scores_from_folder(
@@ -109,7 +111,7 @@ print("Average normal score for random train: ", np.mean(rand_train_scores))
 print("Average EDNA score for random train: ", np.mean(rand_train_edna_scores))
 
 print("Average normal score for estim train: ", np.mean(estim_train_scores))
-print("Average EDNA score for random: ", np.mean(estim_train_edna_scores))
+print("Average EDNA score for estim train: ", np.mean(estim_train_edna_scores))
 
 print("Average normal score for needleman: ", np.mean(needle_scores))
 print("Average EDNA score for needleman: ", np.mean(needle_edna_scores))

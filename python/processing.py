@@ -176,7 +176,7 @@ def write_data(folder_path, seq_pairs):
 
 
 # load data
-train_data, test_data, estimate_data = load_data("../data/HIV1_ALL_2022_genome_DNA.fasta", 7, 7, 20)
+train_data, test_data, estimate_data = load_data("../data/HIV1_ALL_2022_genome_DNA.fasta", 7, 11, 20)
 # make pairs
 train_pairs = make_pairs(train_data)
 test_pairs = make_pairs(test_data)

@@ -16,7 +16,9 @@ def generate_needleman_alignments(test_data_path: str, alignment_path: str):
             align_file_path = os.path.join(alignment_path, "pair" + str(i))
             with open(align_file_path, "w") as align_file:
                 align_file.write(f"{al1}\n{al2}")
+            print("Aligned file ", i)
         i += 1
+
 
 generate_needleman_alignments("../data/data_test",
                               "../data/alignments_needle")
